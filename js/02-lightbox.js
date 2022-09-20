@@ -11,9 +11,9 @@ function creatingPictureMarkup(gallery) {
         preview,
         original,
         description,
-      }) => `<a class="gallery__item" href="${original}">
+      }) => `<li><a class="gallery__item" href="${original}">
   <img class="gallery__image" src="${preview}" alt="${description}" />
-</a>`
+</a></li>`
     )
     .join('');
 }
@@ -22,17 +22,8 @@ galleryBoxRef.insertAdjacentHTML(
   'beforeend',
   creatingPictureMarkup(galleryItems)
 );
-//при кліку на зображення
-galleryBoxRef.addEventListener('click', openPicture);
 
-function openPicture(e) {
-  e.preventDefault();
-  if (e.target.nodeName !== 'IMG') {
-    return;
-  }
-
-  const gallery = new SimpleLightbox('.gallery a', {
-    captionDelay: 250,
-    captionsData: 'alt',
-  });
-}
+const gallery = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+  captionsData: 'alt',
+});

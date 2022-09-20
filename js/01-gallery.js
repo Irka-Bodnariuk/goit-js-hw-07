@@ -1,7 +1,5 @@
 import { galleryItems } from './gallery-items.js';
 
-// Change code below this line
-
 const galleryBoxRef = document.querySelector('.gallery');
 
 //створення картинок
@@ -42,9 +40,11 @@ function openPicture(e) {
   instance.show();
   //закриття Escape
   document.addEventListener('keydown', clousePicture);
+
   function clousePicture(e) {
     if (e.code === 'Escape') {
       instance.close();
+      document.removeEventListener('keydown', clousePicture);
     }
   }
 }
